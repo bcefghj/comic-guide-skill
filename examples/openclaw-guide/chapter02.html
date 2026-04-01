@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第2话：小龙虾的四层铠甲 | 漫画图解 OpenClaw</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #E8F4FD; color: #333; line-height: 1.6; }
+    :root { --primary: #0099DD; --accent: #DD3333; --gold: #FFD700; --bubble-mentor: #D6EFFF; --bubble-learner: #FFF3CD; --highlight-bg: #FFF9C4; }
+    .comic-container { max-width: 480px; margin: 0 auto; padding: 16px 12px; }
+    @media (min-width: 768px) { .comic-container { max-width: 600px; padding: 24px; } }
+    .chapter-header { text-align: center; padding: 32px 16px; margin-bottom: 24px; background: linear-gradient(180deg, #0099DD, #006699); border-radius: 20px; color: white; }
+    .chapter-number { font-size: 0.9em; opacity: 0.8; }
+    .chapter-title { font-size: 1.8em; font-weight: bold; margin-top: 4px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+    .chapter-subtitle { font-size: 0.95em; opacity: 0.9; margin-top: 8px; }
+    .panel { background: white; border: 3px solid var(--primary); border-radius: 20px; margin-bottom: 20px; overflow: hidden; box-shadow: 4px 4px 0 rgba(0,153,221,0.15); }
+    .panel-title-bar { background: var(--primary); color: white; padding: 8px 16px; font-weight: bold; font-size: 1.05em; }
+    .panel-body { padding: 16px; }
+    .dialogue { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+    .dialogue:last-child { margin-bottom: 0; }
+    .dialogue.reverse { flex-direction: row-reverse; }
+    .dialogue-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8em; flex-shrink: 0; background: white; border: 2px solid var(--primary); }
+    .dialogue-bubble { position: relative; padding: 12px 16px; border-radius: 16px; max-width: calc(100% - 68px); font-size: 0.95em; line-height: 1.6; }
+    .dialogue-bubble.mentor { background: var(--bubble-mentor); }
+    .dialogue-bubble.learner { background: var(--bubble-learner); }
+    .dialogue-name { font-size: 0.8em; font-weight: bold; color: var(--primary); margin-bottom: 4px; }
+    .dialogue-bubble strong { color: var(--primary); }
+    .concept-card { background: linear-gradient(135deg, #FFFDE7, #FFF9C4); border: 3px solid var(--gold); border-radius: 20px; padding: 24px; margin: 20px 0; text-align: center; position: relative; overflow: hidden; }
+    .concept-card::before { content: '✨'; position: absolute; top: 8px; left: 12px; font-size: 1.2em; }
+    .concept-card::after { content: '✨'; position: absolute; top: 8px; right: 12px; font-size: 1.2em; }
+    .concept-card .emoji { font-size: 2.5em; margin-bottom: 8px; }
+    .concept-card .name { font-size: 1.3em; font-weight: bold; color: var(--primary); }
+    .concept-card .desc { font-size: 0.9em; color: #555; margin-top: 10px; line-height: 1.5; text-align: left; padding: 0 8px; }
+    .highlight-box { background: var(--highlight-bg); border-left: 4px solid var(--gold); border-radius: 0 20px 20px 0; padding: 16px 16px 16px 20px; margin: 16px 0; }
+    .highlight-box .title { font-weight: bold; font-size: 1.05em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .highlight-box ul { padding-left: 20px; }
+    .highlight-box li { margin-bottom: 6px; font-size: 0.95em; }
+    .highlight-box li strong { color: var(--primary); }
+    .diagram-panel { background: white; border: 2px dashed var(--primary); border-radius: 20px; padding: 20px; margin: 20px 0; }
+    .diagram-title { text-align: center; font-weight: bold; font-size: 1.1em; color: var(--primary); margin-bottom: 16px; }
+    .arch-layers { display: flex; flex-direction: column; gap: 0; }
+    .arch-layer { padding: 16px; text-align: center; color: white; position: relative; border-radius: 12px; margin-bottom: 4px; }
+    .arch-layer .layer-name { font-size: 1.1em; font-weight: bold; }
+    .arch-layer .layer-desc { font-size: 0.8em; opacity: 0.9; margin-top: 2px; }
+    .arch-layer .layer-emoji { font-size: 1.5em; margin-bottom: 4px; }
+    .arch-arrow { text-align: center; font-size: 1.3em; color: #999; margin: 2px 0; }
+    .gadget-panel { background: linear-gradient(135deg, #FFFDE7, #FFF9C4); border: 3px solid var(--gold); border-radius: 20px; padding: 20px; margin: 16px 0; }
+    .gadget-panel .gadget-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .gadget-panel .gadget-icon { font-size: 2.2em; }
+    .gadget-panel .gadget-info .gadget-name { font-size: 1.15em; font-weight: bold; color: var(--primary); }
+    .gadget-panel .gadget-info .gadget-map { font-size: 0.85em; color: #888; }
+    .gadget-panel .gadget-desc { font-size: 0.9em; color: #555; line-height: 1.5; }
+    .reaction { text-align: center; padding: 20px; margin: 12px 0; }
+    .reaction .emoji { font-size: 3em; display: block; margin-bottom: 8px; }
+    .reaction .text { font-size: 1.1em; font-weight: bold; color: var(--primary); }
+    .summary-panel { background: linear-gradient(135deg, #0099DD, #006699); color: white; border-radius: 20px; padding: 24px; margin: 20px 0; }
+    .summary-panel h3 { font-size: 1.2em; margin-bottom: 12px; }
+    .summary-panel ul { padding-left: 20px; }
+    .summary-panel li { margin-bottom: 6px; }
+    .summary-panel .next-preview { margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 0.9em; opacity: 0.9; }
+    .nav-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-top: 24px; border-top: 2px solid var(--primary); }
+    .nav-btn { display: inline-block; padding: 8px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; transition: opacity 0.2s; }
+    .nav-btn:hover { opacity: 0.85; }
+    .nav-btn.disabled { background: #ccc; pointer-events: none; }
+    .nav-home { font-size: 1.2em; text-decoration: none; color: var(--primary); }
+    .footer { text-align: center; padding: 24px 16px; color: #999; font-size: 0.8em; }
+  </style>
+</head>
+<body>
+  <div class="comic-container">
+
+    <div class="chapter-header">
+      <div class="chapter-number">第 2 话</div>
+      <div class="chapter-title">小龙虾的四层铠甲</div>
+      <div class="chapter-subtitle">用道具类比讲解 OpenClaw 的四层架构</div>
+    </div>
+
+    <!-- 面板1：引入 -->
+    <div class="panel">
+      <div class="panel-title-bar">🔍 上回说到...</div>
+      <div class="panel-body">
+        <div class="dialogue">
+          <div class="dialogue-avatar">👦</div>
+          <div class="dialogue-bubble learner">
+            <div class="dialogue-name">大雄</div>
+            哆啦A梦，小龙虾这么厉害，它的内部结构是什么样的呀？
+          </div>
+        </div>
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            好问题！小龙虾有<strong>「四层铠甲」</strong>，就像我的道具一样，每一层都有特殊功能！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 面板2：架构总览 -->
+    <div class="diagram-panel">
+      <div class="diagram-title">🦞 OpenClaw 四层架构</div>
+      <div class="arch-layers">
+        <div class="arch-layer" style="background: linear-gradient(135deg, #FF6B6B, #EE5A5A);">
+          <div class="layer-emoji">📱</div>
+          <div class="layer-name">交互层</div>
+          <div class="layer-desc">对接 25+ 通讯渠道</div>
+        </div>
+        <div class="arch-arrow">⬇️</div>
+        <div class="arch-layer" style="background: linear-gradient(135deg, #4ECDC4, #3DBDB5);">
+          <div class="layer-emoji">🚪</div>
+          <div class="layer-name">网关层 (Gateway)</div>
+          <div class="layer-desc">常驻后台的控制中枢</div>
+        </div>
+        <div class="arch-arrow">⬇️</div>
+        <div class="arch-layer" style="background: linear-gradient(135deg, #45B7D1, #3AA7C1);">
+          <div class="layer-emoji">🧠</div>
+          <div class="layer-name">智能体层 (Agent Runtime)</div>
+          <div class="layer-desc">基于 ReAct 循环的决策引擎</div>
+        </div>
+        <div class="arch-arrow">⬇️</div>
+        <div class="arch-layer" style="background: linear-gradient(135deg, #96CEB4, #7BBF9E);">
+          <div class="layer-emoji">⚡</div>
+          <div class="layer-name">执行层</div>
+          <div class="layer-desc">本地节点 + 远端节点</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 面板3：第一层 - 交互层 -->
+    <div class="gadget-panel">
+      <div class="gadget-header">
+        <div class="gadget-icon">📱</div>
+        <div class="gadget-info">
+          <div class="gadget-name">交互层 ≈ 竹蜻蜓</div>
+          <div class="gadget-map">道具类比：飞到任何地方接收信息</div>
+        </div>
+      </div>
+      <div class="gadget-desc">
+        就像竹蜻蜓能带你飞到任何地方一样，交互层让小龙虾连接 <strong>25+ 个通讯渠道</strong>：Telegram、WhatsApp、飞书、钉钉、Slack、Discord... 不管你从哪里发指令，小龙虾都能收到！
+      </div>
+    </div>
+
+    <!-- 面板4：第二层 - 网关层 -->
+    <div class="gadget-panel">
+      <div class="gadget-header">
+        <div class="gadget-icon">🚪</div>
+        <div class="gadget-info">
+          <div class="gadget-name">网关层 ≈ 任意门</div>
+          <div class="gadget-map">道具类比：所有请求的统一入口</div>
+        </div>
+      </div>
+      <div class="gadget-desc">
+        任意门是通向一切的入口，网关层（Gateway）也是一样！它是小龙虾的<strong>「控制中枢」</strong>，在 127.0.0.1:18789 端口常驻后台，负责<strong>路由、排队和调度</strong>所有消息——谁先来、谁后到，安排得明明白白！
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div class="dialogue">
+          <div class="dialogue-avatar">👦</div>
+          <div class="dialogue-bubble learner">
+            <div class="dialogue-name">大雄</div>
+            哦！就像任意门帮我们连接不同的地方，网关层帮小龙虾连接不同的消息来源！
+          </div>
+        </div>
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            没错！而且它还用 WebSocket 保持<strong>长连接</strong>，实时传递消息，不会有延迟哦！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 面板5：第三层 - 智能体层 -->
+    <div class="gadget-panel">
+      <div class="gadget-header">
+        <div class="gadget-icon">🧠</div>
+        <div class="gadget-info">
+          <div class="gadget-name">智能体层 ≈ 时光机</div>
+          <div class="gadget-map">道具类比：规划路线，决定去哪个时代</div>
+        </div>
+      </div>
+      <div class="gadget-desc">
+        时光机需要设定目的地、规划路线，智能体层也一样！它是小龙虾的<strong>「大脑」</strong>，使用 <strong>ReAct 循环</strong>来思考和行动：
+      </div>
+    </div>
+
+    <div class="diagram-panel">
+      <div class="diagram-title">🔄 ReAct 循环（思考-行动-观察）</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="background:#45B7D1;color:white;padding:12px 24px;border-radius:12px;font-weight:bold;width:80%;text-align:center;">
+          🤔 Reason（思考）<br><span style="font-size:0.8em;opacity:0.9;">分析任务，制定计划</span>
+        </div>
+        <div style="font-size:1.3em;color:#999;">⬇️</div>
+        <div style="background:#4ECDC4;color:white;padding:12px 24px;border-radius:12px;font-weight:bold;width:80%;text-align:center;">
+          🎬 Act（行动）<br><span style="font-size:0.8em;opacity:0.9;">调用工具，执行操作</span>
+        </div>
+        <div style="font-size:1.3em;color:#999;">⬇️</div>
+        <div style="background:#96CEB4;color:white;padding:12px 24px;border-radius:12px;font-weight:bold;width:80%;text-align:center;">
+          👀 Observe（观察）<br><span style="font-size:0.8em;opacity:0.9;">检查结果，决定下一步</span>
+        </div>
+        <div style="font-size:1.3em;color:#999;">🔄 循环直到完成</div>
+      </div>
+    </div>
+
+    <!-- 面板6：第四层 - 执行层 -->
+    <div class="gadget-panel">
+      <div class="gadget-header">
+        <div class="gadget-icon">⚡</div>
+        <div class="gadget-info">
+          <div class="gadget-name">执行层 ≈ 缩小灯 + 放大灯</div>
+          <div class="gadget-map">道具类比：真正动手改变世界</div>
+        </div>
+      </div>
+      <div class="gadget-desc">
+        缩小灯和放大灯能真正改变物体，执行层就是小龙虾<strong>「真正动手」</strong>的部分！它分为两种节点：
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="title">⚡ 执行层的两种节点</div>
+      <ul>
+        <li><strong>本地节点</strong> — 直接在你的电脑上操作：管理文件、运行代码、控制鼠标键盘</li>
+        <li><strong>远端节点</strong> — 连接云端服务：调用 API、操作数据库、访问远程服务器</li>
+      </ul>
+    </div>
+
+    <!-- 面板7：反应 + 整体理解 -->
+    <div class="reaction">
+      <span class="emoji">🤩</span>
+      <span class="text">四层架构，各司其职，太精妙了！</span>
+    </div>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div class="dialogue">
+          <div class="dialogue-avatar">👦</div>
+          <div class="dialogue-bubble learner">
+            <div class="dialogue-name">大雄</div>
+            我懂了！就是：接收消息 → 统一调度 → 思考决策 → 执行操作，对吧？
+          </div>
+        </div>
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            大雄你太聪明了！👏 但是小龙虾还有一个厉害的东西，就是它的<strong>「百宝袋」—— Skills 系统</strong>！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 总结 -->
+    <div class="summary-panel">
+      <h3>📝 本话总结</h3>
+      <ul>
+        <li><strong>交互层</strong>（竹蜻蜓）：对接 25+ 通讯渠道，接收各方指令</li>
+        <li><strong>网关层</strong>（任意门）：控制中枢，路由调度所有消息</li>
+        <li><strong>智能体层</strong>（时光机）：ReAct 循环，思考→行动→观察</li>
+        <li><strong>执行层</strong>（缩小灯）：本地+远端节点，真正动手执行</li>
+      </ul>
+      <div class="next-preview">📖 下一话预告：「百宝袋就是 Skills」——深入 OpenClaw 的模块化技能系统！</div>
+    </div>
+
+    <div class="nav-bar">
+      <a class="nav-btn" href="chapter01.html">← 上一话</a>
+      <a class="nav-home" href="index.html">📖 目录</a>
+      <a class="nav-btn" href="chapter03.html">下一话 →</a>
+    </div>
+
+    <div class="footer">漫画图解 OpenClaw | 第2话 | 风格：哆啦A梦 | by comic-guide-skill</div>
+  </div>
+</body>
+</html>

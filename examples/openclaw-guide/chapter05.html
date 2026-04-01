@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第5话：一起养虾吧！| 漫画图解 OpenClaw</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #E8F4FD; color: #333; line-height: 1.6; }
+    :root { --primary: #0099DD; --accent: #DD3333; --gold: #FFD700; --bubble-mentor: #D6EFFF; --bubble-learner: #FFF3CD; --highlight-bg: #FFF9C4; }
+    .comic-container { max-width: 480px; margin: 0 auto; padding: 16px 12px; }
+    @media (min-width: 768px) { .comic-container { max-width: 600px; padding: 24px; } }
+    .chapter-header { text-align: center; padding: 32px 16px; margin-bottom: 24px; background: linear-gradient(180deg, #0099DD, #006699); border-radius: 20px; color: white; }
+    .chapter-number { font-size: 0.9em; opacity: 0.8; }
+    .chapter-title { font-size: 1.8em; font-weight: bold; margin-top: 4px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+    .chapter-subtitle { font-size: 0.95em; opacity: 0.9; margin-top: 8px; }
+    .panel { background: white; border: 3px solid var(--primary); border-radius: 20px; margin-bottom: 20px; overflow: hidden; box-shadow: 4px 4px 0 rgba(0,153,221,0.15); }
+    .panel-title-bar { background: var(--primary); color: white; padding: 8px 16px; font-weight: bold; font-size: 1.05em; }
+    .panel-body { padding: 16px; }
+    .dialogue { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+    .dialogue:last-child { margin-bottom: 0; }
+    .dialogue.reverse { flex-direction: row-reverse; }
+    .dialogue-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8em; flex-shrink: 0; background: white; border: 2px solid var(--primary); }
+    .dialogue-bubble { position: relative; padding: 12px 16px; border-radius: 16px; max-width: calc(100% - 68px); font-size: 0.95em; line-height: 1.6; }
+    .dialogue-bubble.mentor { background: var(--bubble-mentor); }
+    .dialogue-bubble.learner { background: var(--bubble-learner); }
+    .dialogue-name { font-size: 0.8em; font-weight: bold; color: var(--primary); margin-bottom: 4px; }
+    .dialogue-bubble strong { color: var(--primary); }
+    .concept-card { background: linear-gradient(135deg, #FFFDE7, #FFF9C4); border: 3px solid var(--gold); border-radius: 20px; padding: 24px; margin: 20px 0; text-align: center; position: relative; overflow: hidden; }
+    .concept-card::before { content: '✨'; position: absolute; top: 8px; left: 12px; font-size: 1.2em; }
+    .concept-card::after { content: '✨'; position: absolute; top: 8px; right: 12px; font-size: 1.2em; }
+    .concept-card .emoji { font-size: 2.5em; margin-bottom: 8px; }
+    .concept-card .name { font-size: 1.3em; font-weight: bold; color: var(--primary); }
+    .concept-card .desc { font-size: 0.9em; color: #555; margin-top: 10px; line-height: 1.5; text-align: left; padding: 0 8px; }
+    .highlight-box { background: var(--highlight-bg); border-left: 4px solid var(--gold); border-radius: 0 20px 20px 0; padding: 16px 16px 16px 20px; margin: 16px 0; }
+    .highlight-box .title { font-weight: bold; font-size: 1.05em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .highlight-box ul { padding-left: 20px; }
+    .highlight-box li { margin-bottom: 6px; font-size: 0.95em; }
+    .highlight-box li strong { color: var(--primary); }
+    .code-panel { background: #1E1E2E; color: #CDD6F4; border-radius: 14px; padding: 16px; margin: 16px 0; overflow-x: auto; }
+    .code-panel pre { font-family: 'SF Mono', 'Courier New', monospace; font-size: 0.83em; line-height: 1.6; white-space: pre; }
+    .code-panel .comment { color: #6C7086; }
+    .code-panel .cmd { color: #A6E3A1; }
+    .code-panel .flag { color: #CBA6F7; }
+    .code-panel .string { color: #F9E2AF; }
+    .diagram-panel { background: white; border: 2px dashed var(--primary); border-radius: 20px; padding: 20px; margin: 20px 0; }
+    .diagram-title { text-align: center; font-weight: bold; font-size: 1.1em; color: var(--primary); margin-bottom: 16px; }
+    .step-list { counter-reset: step; }
+    .step-item { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+    .step-item:last-child { margin-bottom: 0; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+    .step-content { flex: 1; }
+    .step-content .step-title { font-weight: bold; font-size: 0.95em; margin-bottom: 4px; }
+    .step-content .step-desc { font-size: 0.85em; color: #666; }
+    .deploy-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .deploy-option { border-radius: 12px; padding: 14px 8px; text-align: center; }
+    .deploy-option .d-icon { font-size: 2em; margin-bottom: 4px; }
+    .deploy-option .d-name { font-size: 0.85em; font-weight: bold; }
+    .deploy-option .d-desc { font-size: 0.72em; color: #666; margin-top: 4px; }
+    .reaction { text-align: center; padding: 20px; margin: 12px 0; }
+    .reaction .emoji { font-size: 3em; display: block; margin-bottom: 8px; }
+    .reaction .text { font-size: 1.1em; font-weight: bold; color: var(--primary); }
+    .celebration { text-align: center; padding: 32px 20px; margin: 20px 0; background: linear-gradient(135deg, #FFF9C4, #FFECB3); border: 3px solid var(--gold); border-radius: 20px; }
+    .celebration .big-emoji { font-size: 4em; margin-bottom: 12px; }
+    .celebration .big-text { font-size: 1.5em; font-weight: bold; color: var(--primary); }
+    .celebration .sub-text { font-size: 0.95em; color: #666; margin-top: 8px; }
+    .summary-panel { background: linear-gradient(135deg, #0099DD, #006699); color: white; border-radius: 20px; padding: 24px; margin: 20px 0; }
+    .summary-panel h3 { font-size: 1.2em; margin-bottom: 12px; }
+    .summary-panel ul { padding-left: 20px; }
+    .summary-panel li { margin-bottom: 6px; }
+    .nav-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-top: 24px; border-top: 2px solid var(--primary); }
+    .nav-btn { display: inline-block; padding: 8px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; transition: opacity 0.2s; }
+    .nav-btn:hover { opacity: 0.85; }
+    .nav-btn.disabled { background: #ccc; pointer-events: none; }
+    .nav-home { font-size: 1.2em; text-decoration: none; color: var(--primary); }
+    .footer { text-align: center; padding: 24px 16px; color: #999; font-size: 0.8em; }
+    .footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="comic-container">
+
+    <div class="chapter-header">
+      <div class="chapter-number">第 5 话（最终话）</div>
+      <div class="chapter-title">一起养虾吧！</div>
+      <div class="chapter-subtitle">从零开始部署和使用 OpenClaw 实战教程</div>
+    </div>
+
+    <!-- 面板1：引入 -->
+    <div class="panel">
+      <div class="panel-title-bar">🚀 出发！部署小龙虾</div>
+      <div class="panel-body">
+        <div class="dialogue">
+          <div class="dialogue-avatar">👦</div>
+          <div class="dialogue-bubble learner">
+            <div class="dialogue-name">大雄</div>
+            我已经完全理解小龙虾的原理了！快教我怎么养一只属于自己的小龙虾！🦞
+          </div>
+        </div>
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            好！就像坐<strong>「时光机」出发冒险</strong>一样，我们来一步步部署你的小龙虾！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 面板2：三种部署方式 -->
+    <div class="diagram-panel">
+      <div class="diagram-title">🏠 三种养虾方式</div>
+      <div class="deploy-grid">
+        <div class="deploy-option" style="background: #E3F2FD; border: 2px solid #90CAF9;">
+          <div class="d-icon">☁️</div>
+          <div class="d-name">阿里云</div>
+          <div class="d-desc">7x24 不间断<br>适合常驻运行</div>
+        </div>
+        <div class="deploy-option" style="background: #E8F5E9; border: 2px solid #A5D6A7;">
+          <div class="d-icon">💻</div>
+          <div class="d-name">本地电脑</div>
+          <div class="d-desc">Windows/Mac/Linux<br>最低 2GB 内存</div>
+        </div>
+        <div class="deploy-option" style="background: #FFF3E0; border: 2px solid #FFCC80;">
+          <div class="d-icon">🐳</div>
+          <div class="d-name">Docker</div>
+          <div class="d-desc">容器化部署<br>隔离安全</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 面板3：环境准备 -->
+    <div class="panel">
+      <div class="panel-title-bar">📦 第一步：准备环境</div>
+      <div class="panel-body">
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            先检查你有没有这些<strong>「基础道具」</strong>：
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="title">🔧 环境要求</div>
+      <ul>
+        <li><strong>Node.js v22+</strong> — 小龙虾的运行引擎</li>
+        <li><strong>Python 3.9+</strong> — 部分技能需要</li>
+        <li><strong>Git</strong> — 用于克隆代码</li>
+        <li><strong>2GB+ 内存</strong> — 最低配置</li>
+      </ul>
+    </div>
+
+    <div class="code-panel">
+      <pre><span class="comment"># 检查环境是否就绪</span>
+<span class="cmd">node</span> <span class="flag">--version</span>   <span class="comment"># 需要 v22+</span>
+<span class="cmd">python3</span> <span class="flag">--version</span> <span class="comment"># 需要 3.9+</span>
+<span class="cmd">git</span> <span class="flag">--version</span></pre>
+    </div>
+
+    <!-- 面板4：安装步骤 -->
+    <div class="panel">
+      <div class="panel-title-bar">🦞 第二步：安装小龙虾</div>
+      <div class="panel-body">
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            就像在百货公司买道具一样简单，一行命令搞定！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-panel">
+      <pre><span class="comment"># 方式一：npm 全局安装（推荐）</span>
+<span class="cmd">npm</span> install <span class="flag">-g</span> openclaw
+
+<span class="comment"># 方式二：一键脚本安装</span>
+<span class="cmd">curl</span> <span class="flag">-fsSL</span> https://get.openclaw.ai | <span class="cmd">bash</span>
+
+<span class="comment"># 安装完成后验证</span>
+<span class="cmd">openclaw</span> <span class="flag">--version</span></pre>
+    </div>
+
+    <!-- 面板5：配置模型 -->
+    <div class="panel">
+      <div class="panel-title-bar">🧠 第三步：配置大脑</div>
+      <div class="panel-body">
+        <div class="dialogue">
+          <div class="dialogue-avatar">👦</div>
+          <div class="dialogue-bubble learner">
+            <div class="dialogue-name">大雄</div>
+            装好了！但是小龙虾需要一个「大脑」对吧？
+          </div>
+        </div>
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            对！你需要配置一个<strong>大模型 API</strong> 作为它的大脑。推荐几个选择：
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diagram-panel">
+      <div class="diagram-title">🧠 大脑排行榜（PinchBench 2026）</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:1.3em;">🥇</span>
+          <div style="flex:1;background:#4CAF50;color:white;padding:8px 12px;border-radius:8px;font-size:0.85em;">
+            <strong>Claude Sonnet 4.6</strong> — 成功率 86.9%
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:1.3em;">🥈</span>
+          <div style="flex:1;background:#2196F3;color:white;padding:8px 12px;border-radius:8px;font-size:0.85em;">
+            <strong>Claude Opus 4.6</strong> — 成功率 86.3%
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:1.3em;">🥉</span>
+          <div style="flex:1;background:#FF9800;color:white;padding:8px 12px;border-radius:8px;font-size:0.85em;">
+            <strong>GPT-5.4</strong> — 成功率 86.0%
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:1.3em;">🇨🇳</span>
+          <div style="flex:1;background:#9C27B0;color:white;padding:8px 12px;border-radius:8px;font-size:0.85em;">
+            <strong>Kimi K2.5</strong> — 成功率 84.8%（中文最佳）
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-panel">
+      <pre><span class="comment"># 配置百炼 API（国内推荐）</span>
+<span class="cmd">openclaw</span> config set <span class="flag">--provider</span> <span class="string">aliyun-bailian</span>
+<span class="cmd">openclaw</span> config set <span class="flag">--api-key</span> <span class="string">your-api-key</span>
+
+<span class="comment"># 或配置 Anthropic API</span>
+<span class="cmd">openclaw</span> config set <span class="flag">--provider</span> <span class="string">anthropic</span>
+<span class="cmd">openclaw</span> config set <span class="flag">--api-key</span> <span class="string">sk-ant-xxx</span></pre>
+    </div>
+
+    <!-- 面板6：启动 -->
+    <div class="panel">
+      <div class="panel-title-bar">🎉 第四步：启动！</div>
+      <div class="panel-body">
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            万事俱备！就像按下时光机的<strong>启动按钮</strong>一样——
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-panel">
+      <pre><span class="comment"># 启动小龙虾！</span>
+<span class="cmd">openclaw</span> start
+
+<span class="comment"># 安装你的第一个技能</span>
+<span class="cmd">clawhub</span> install comic-guide
+
+<span class="comment"># 开始对话</span>
+<span class="cmd">openclaw</span> chat <span class="string">"帮我整理桌面上的文件"</span></pre>
+    </div>
+
+    <!-- 面板7：庆祝 -->
+    <div class="celebration">
+      <div class="big-emoji">🎊🦞🎊</div>
+      <div class="big-text">恭喜！你的小龙虾活了！</div>
+      <div class="sub-text">从现在开始，它会是你最得力的 AI 助手</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div class="dialogue">
+          <div class="dialogue-avatar">👦</div>
+          <div class="dialogue-bubble learner">
+            <div class="dialogue-name">大雄</div>
+            太棒了！！我的小龙虾已经在帮我整理文件了！谢谢哆啦A梦！🥹
+          </div>
+        </div>
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            不客气！记住，好好照顾它，给它安装更多技能，它会越来越聪明的！<strong>养虾快乐</strong>！🦞✨
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 总结 -->
+    <div class="summary-panel">
+      <h3>📝 全系列总结</h3>
+      <ul>
+        <li><strong>第1话</strong>：OpenClaw 是能自主行动的 AI Agent，不是聊天机器人</li>
+        <li><strong>第2话</strong>：四层架构 = 交互层 + 网关层 + 智能体层 + 执行层</li>
+        <li><strong>第3话</strong>：Skills 就是百宝袋，5400+ 技能，人人可创建</li>
+        <li><strong>第4话</strong>：三级记忆 + 四大安全防护</li>
+        <li><strong>第5话</strong>：安装环境 → 安装小龙虾 → 配置大脑 → 启动！</li>
+      </ul>
+    </div>
+
+    <div class="concept-card">
+      <div class="emoji">📖</div>
+      <div class="name">本漫画由 comic-guide-skill 生成</div>
+      <div class="desc">
+        想为自己的项目、文档或教程也生成这样的漫画图解吗？安装 comic-guide-skill 就可以：<br><br>
+        <code style="background:#E8F4FD;padding:4px 8px;border-radius:4px;">clawhub install comic-guide</code><br><br>
+        支持 10+ 种动漫风格（哆啦A梦、火影忍者、海贼王、龙珠...），兼容 Cursor / Claude Code / OpenClaw！
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <a class="nav-btn" href="chapter04.html">← 上一话</a>
+      <a class="nav-home" href="index.html">📖 目录</a>
+      <a class="nav-btn disabled" href="#">完结 ✨</a>
+    </div>
+
+    <div class="footer">
+      漫画图解 OpenClaw | 全5话完结 | 风格：哆啦A梦 | by <a href="https://github.com/bcefghj/comic-guide-skill">comic-guide-skill</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第3话：百宝袋就是 Skills | 漫画图解 OpenClaw</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #E8F4FD; color: #333; line-height: 1.6; }
+    :root { --primary: #0099DD; --accent: #DD3333; --gold: #FFD700; --bubble-mentor: #D6EFFF; --bubble-learner: #FFF3CD; --highlight-bg: #FFF9C4; }
+    .comic-container { max-width: 480px; margin: 0 auto; padding: 16px 12px; }
+    @media (min-width: 768px) { .comic-container { max-width: 600px; padding: 24px; } }
+    .chapter-header { text-align: center; padding: 32px 16px; margin-bottom: 24px; background: linear-gradient(180deg, #0099DD, #006699); border-radius: 20px; color: white; }
+    .chapter-number { font-size: 0.9em; opacity: 0.8; }
+    .chapter-title { font-size: 1.8em; font-weight: bold; margin-top: 4px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+    .chapter-subtitle { font-size: 0.95em; opacity: 0.9; margin-top: 8px; }
+    .panel { background: white; border: 3px solid var(--primary); border-radius: 20px; margin-bottom: 20px; overflow: hidden; box-shadow: 4px 4px 0 rgba(0,153,221,0.15); }
+    .panel-title-bar { background: var(--primary); color: white; padding: 8px 16px; font-weight: bold; font-size: 1.05em; }
+    .panel-body { padding: 16px; }
+    .dialogue { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+    .dialogue:last-child { margin-bottom: 0; }
+    .dialogue.reverse { flex-direction: row-reverse; }
+    .dialogue-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8em; flex-shrink: 0; background: white; border: 2px solid var(--primary); }
+    .dialogue-bubble { position: relative; padding: 12px 16px; border-radius: 16px; max-width: calc(100% - 68px); font-size: 0.95em; line-height: 1.6; }
+    .dialogue-bubble.mentor { background: var(--bubble-mentor); }
+    .dialogue-bubble.learner { background: var(--bubble-learner); }
+    .dialogue-name { font-size: 0.8em; font-weight: bold; color: var(--primary); margin-bottom: 4px; }
+    .dialogue-bubble strong { color: var(--primary); }
+    .concept-card { background: linear-gradient(135deg, #FFFDE7, #FFF9C4); border: 3px solid var(--gold); border-radius: 20px; padding: 24px; margin: 20px 0; text-align: center; position: relative; overflow: hidden; }
+    .concept-card::before { content: '✨'; position: absolute; top: 8px; left: 12px; font-size: 1.2em; }
+    .concept-card::after { content: '✨'; position: absolute; top: 8px; right: 12px; font-size: 1.2em; }
+    .concept-card .emoji { font-size: 2.5em; margin-bottom: 8px; }
+    .concept-card .name { font-size: 1.3em; font-weight: bold; color: var(--primary); }
+    .concept-card .desc { font-size: 0.9em; color: #555; margin-top: 10px; line-height: 1.5; text-align: left; padding: 0 8px; }
+    .highlight-box { background: var(--highlight-bg); border-left: 4px solid var(--gold); border-radius: 0 20px 20px 0; padding: 16px 16px 16px 20px; margin: 16px 0; }
+    .highlight-box .title { font-weight: bold; font-size: 1.05em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .highlight-box ul { padding-left: 20px; }
+    .highlight-box li { margin-bottom: 6px; font-size: 0.95em; }
+    .highlight-box li strong { color: var(--primary); }
+    .diagram-panel { background: white; border: 2px dashed var(--primary); border-radius: 20px; padding: 20px; margin: 20px 0; }
+    .diagram-title { text-align: center; font-weight: bold; font-size: 1.1em; color: var(--primary); margin-bottom: 16px; }
+    .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .skill-item { border: 2px solid #B3E0F7; border-radius: 14px; padding: 14px 10px; text-align: center; background: #F8FCFF; }
+    .skill-item .s-emoji { font-size: 2em; margin-bottom: 4px; }
+    .skill-item .s-gadget { font-size: 0.78em; color: #888; margin-bottom: 2px; }
+    .skill-item .s-name { font-size: 0.9em; font-weight: bold; color: var(--primary); }
+    .skill-item .s-desc { font-size: 0.75em; color: #666; margin-top: 4px; }
+    .code-panel { background: #1E1E2E; color: #CDD6F4; border-radius: 14px; padding: 16px; margin: 16px 0; overflow-x: auto; }
+    .code-panel pre { font-family: 'SF Mono', 'Courier New', monospace; font-size: 0.85em; line-height: 1.6; white-space: pre; }
+    .code-panel .comment { color: #6C7086; }
+    .code-panel .cmd { color: #A6E3A1; }
+    .code-panel .flag { color: #CBA6F7; }
+    .reaction { text-align: center; padding: 20px; margin: 12px 0; }
+    .reaction .emoji { font-size: 3em; display: block; margin-bottom: 8px; }
+    .reaction .text { font-size: 1.1em; font-weight: bold; color: var(--primary); }
+    .flow-steps { display: flex; flex-direction: column; gap: 0; }
+    .flow-step-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; }
+    .flow-step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9em; flex-shrink: 0; }
+    .flow-step-text { font-size: 0.9em; }
+    .flow-step-arrow { text-align: center; color: #ccc; font-size: 1.1em; margin-left: 10px; }
+    .summary-panel { background: linear-gradient(135deg, #0099DD, #006699); color: white; border-radius: 20px; padding: 24px; margin: 20px 0; }
+    .summary-panel h3 { font-size: 1.2em; margin-bottom: 12px; }
+    .summary-panel ul { padding-left: 20px; }
+    .summary-panel li { margin-bottom: 6px; }
+    .summary-panel .next-preview { margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 0.9em; opacity: 0.9; }
+    .nav-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-top: 24px; border-top: 2px solid var(--primary); }
+    .nav-btn { display: inline-block; padding: 8px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; transition: opacity 0.2s; }
+    .nav-btn:hover { opacity: 0.85; }
+    .nav-home { font-size: 1.2em; text-decoration: none; color: var(--primary); }
+    .footer { text-align: center; padding: 24px 16px; color: #999; font-size: 0.8em; }
+  </style>
+</head>
+<body>
+  <div class="comic-container">
+
+    <div class="chapter-header">
+      <div class="chapter-number">第 3 话</div>
+      <div class="chapter-title">百宝袋就是 Skills</div>
+      <div class="chapter-subtitle">用道具类比 OpenClaw 的模块化技能系统</div>
+    </div>
+
+    <!-- 面板1：引入 -->
+    <div class="panel">
+      <div class="panel-title-bar">🎒 哆啦A梦的百宝袋</div>
+      <div class="panel-body">
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            大雄，你知道我的百宝袋里有多少道具吗？
+          </div>
+        </div>
+        <div class="dialogue">
+          <div class="dialogue-avatar">👦</div>
+          <div class="dialogue-bubble learner">
+            <div class="dialogue-name">大雄</div>
+            好几千个？任意门、竹蜻蜓、时光包袱巾...
+          </div>
+        </div>
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            没错！小龙虾的<strong>「Skills 系统」</strong>就是它的百宝袋——目前已有 <strong>5,400+ 个技能</strong>，而且每天还在增加！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 面板2：概念卡片 -->
+    <div class="concept-card">
+      <div class="emoji">🎒</div>
+      <div class="name">Skills = 百宝袋</div>
+      <div class="desc">
+        每个 Skill 就是一个「道具」——一份 SKILL.md 文件，告诉小龙虾遇到什么情况、按什么步骤干活。不需要写代码，只需要会写 Markdown！
+      </div>
+    </div>
+
+    <!-- 面板3：道具 = Skill 映射 -->
+    <div class="diagram-panel">
+      <div class="diagram-title">🛠️ 道具 ↔ Skill 对照表</div>
+      <div class="skill-grid">
+        <div class="skill-item">
+          <div class="s-emoji">🚪</div>
+          <div class="s-gadget">≈ 任意门</div>
+          <div class="s-name">url-to-markdown</div>
+          <div class="s-desc">抓取任何网页转 Markdown</div>
+        </div>
+        <div class="skill-item">
+          <div class="s-emoji">🖼️</div>
+          <div class="s-gadget">≈ 如果电话亭</div>
+          <div class="s-name">image-gen</div>
+          <div class="s-desc">AI 生成任意图像</div>
+        </div>
+        <div class="skill-item">
+          <div class="s-emoji">📝</div>
+          <div class="s-gadget">≈ 自动日记</div>
+          <div class="s-name">smart-git-commit</div>
+          <div class="s-desc">智能生成提交信息</div>
+        </div>
+        <div class="skill-item">
+          <div class="s-emoji">🎨</div>
+          <div class="s-gadget">≈ 绘画笔</div>
+          <div class="s-name">comic-guide</div>
+          <div class="s-desc">生成漫画图解（本技能！）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 面板4：Skill 结构 -->
+    <div class="panel">
+      <div class="panel-title-bar">📦 一个 Skill 长什么样？</div>
+      <div class="panel-body">
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            每个 Skill 就是一个文件夹，里面最重要的是 <strong>SKILL.md</strong> 文件！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-panel">
+      <pre><span class="comment"># Skill 文件夹结构</span>
+my-skill/
+├── <span class="cmd">SKILL.md</span>        <span class="comment"># 必需！操作说明书</span>
+├── references/     <span class="comment"># 可选：参考文档</span>
+├── scripts/        <span class="comment"># 可选：脚本工具</span>
+└── examples/       <span class="comment"># 可选：示例</span></pre>
+    </div>
+
+    <div class="code-panel">
+      <pre><span class="comment"># SKILL.md 长这样 👇</span>
+---
+<span class="flag">name</span>: my-awesome-skill
+<span class="flag">description</span>: 技能描述...
+---
+
+<span class="cmd"># 操作步骤</span>
+1. 读取输入文件
+2. 分析内容
+3. 生成输出</pre>
+    </div>
+
+    <!-- 面板5：安装方式 -->
+    <div class="panel">
+      <div class="panel-title-bar">📥 怎么往百宝袋里装道具？</div>
+      <div class="panel-body">
+        <div class="dialogue">
+          <div class="dialogue-avatar">👦</div>
+          <div class="dialogue-bubble learner">
+            <div class="dialogue-name">大雄</div>
+            那我怎么给小龙虾安装新技能呢？
+          </div>
+        </div>
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            有好几种方式呢，从简单到高级都有！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diagram-panel">
+      <div class="diagram-title">📥 三种安装道具的方式</div>
+      <div class="flow-steps">
+        <div class="flow-step-item">
+          <div class="flow-step-num">1</div>
+          <div class="flow-step-text"><strong>对话安装（最简单）</strong><br><span style="font-size:0.85em;color:#666;">直接告诉小龙虾："请安装 xxx 技能"</span></div>
+        </div>
+        <div class="flow-step-arrow">│</div>
+        <div class="flow-step-item">
+          <div class="flow-step-num">2</div>
+          <div class="flow-step-text"><strong>ClawHub 商店</strong><br><span style="font-size:0.85em;color:#666;">clawhub install comic-guide</span></div>
+        </div>
+        <div class="flow-step-arrow">│</div>
+        <div class="flow-step-item">
+          <div class="flow-step-num">3</div>
+          <div class="flow-step-text"><strong>手动放文件</strong><br><span style="font-size:0.85em;color:#666;">复制到 ~/.openclaw/skills/ 目录</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 面板6：ClawHub -->
+    <div class="concept-card">
+      <div class="emoji">🏪</div>
+      <div class="name">ClawHub = 道具商店</div>
+      <div class="desc">
+        ClawHub 是小龙虾的官方技能商店，已收录 <strong>5,400+</strong> 个社区技能。就像哆啦A梦从22世纪的百货公司买道具一样，你可以从 ClawHub 一键安装各种强大的技能！
+      </div>
+    </div>
+
+    <!-- 面板7：反应 -->
+    <div class="reaction">
+      <span class="emoji">💡</span>
+      <span class="text">原来 Skill 就是给 AI 的操作说明书啊！</span>
+    </div>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div class="dialogue">
+          <div class="dialogue-avatar">👦</div>
+          <div class="dialogue-bubble learner">
+            <div class="dialogue-name">大雄</div>
+            这么说，我也可以自己写一个 Skill 给小龙虾用？
+          </div>
+        </div>
+        <div class="dialogue reverse">
+          <div class="dialogue-avatar">🤖</div>
+          <div class="dialogue-bubble mentor">
+            <div class="dialogue-name">哆啦A梦</div>
+            当然可以！只要会写 Markdown 就行，不用写代码！这就是小龙虾生态繁荣的秘密——<strong>人人都能造道具</strong>！🎉
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 总结 -->
+    <div class="summary-panel">
+      <h3>📝 本话总结</h3>
+      <ul>
+        <li><strong>Skills 系统</strong> = 百宝袋，每个 Skill 就是一个道具</li>
+        <li>Skill 本质是 <strong>SKILL.md 文件</strong>，用 Markdown 写的操作说明书</li>
+        <li>安装方式：对话安装 / ClawHub 商店 / 手动放文件</li>
+        <li><strong>ClawHub</strong> 已收录 5,400+ 社区技能，一键安装</li>
+        <li>人人都能创建自己的 Skill，不需要编程基础</li>
+      </ul>
+      <div class="next-preview">📖 下一话预告：「记忆面包与安全头盔」——小龙虾如何记住你的偏好？又如何保护你的安全？</div>
+    </div>
+
+    <div class="nav-bar">
+      <a class="nav-btn" href="chapter02.html">← 上一话</a>
+      <a class="nav-home" href="index.html">📖 目录</a>
+      <a class="nav-btn" href="chapter04.html">下一话 →</a>
+    </div>
+
+    <div class="footer">漫画图解 OpenClaw | 第3话 | 风格：哆啦A梦 | by comic-guide-skill</div>
+  </div>
+</body>
+</html>

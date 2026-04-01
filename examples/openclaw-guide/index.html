@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>漫画图解 OpenClaw（小龙虾）| 哆啦A梦风格</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #E8F4FD; color: #333; line-height: 1.6; }
+    :root { --primary: #0099DD; --accent: #DD3333; --gold: #FFD700; }
+
+    .container { max-width: 480px; margin: 0 auto; padding: 24px 16px; }
+
+    .cover { text-align: center; padding: 48px 24px 40px; background: linear-gradient(180deg, #0099DD 0%, #006699 100%); border-radius: 24px; color: white; margin-bottom: 32px; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%; }
+    .cover::after { content: ''; position: absolute; bottom: -40px; left: -20px; width: 160px; height: 160px; background: rgba(255,255,255,0.05); border-radius: 50%; }
+
+    .cover-characters { font-size: 4em; margin-bottom: 16px; position: relative; z-index: 1; }
+    .cover h1 { font-size: 1.9em; margin-bottom: 8px; position: relative; z-index: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+    .cover .subtitle { font-size: 1em; opacity: 0.9; position: relative; z-index: 1; }
+    .cover .meta-line { margin-top: 16px; font-size: 0.85em; opacity: 0.7; position: relative; z-index: 1; }
+
+    .intro-box { background: white; border-radius: 20px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,153,221,0.1); border: 2px solid #B3E0F7; }
+    .intro-box h2 { color: var(--primary); font-size: 1.15em; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .intro-box p { font-size: 0.95em; color: #555; }
+
+    .toc { list-style: none; margin-bottom: 24px; }
+    .toc li { margin-bottom: 12px; }
+    .toc a { display: flex; align-items: center; gap: 14px; padding: 18px 16px; background: white; border-radius: 16px; text-decoration: none; color: #333; border: 2px solid transparent; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .toc a:hover { border-color: var(--primary); box-shadow: 0 4px 16px rgba(0,153,221,0.15); transform: translateY(-2px); }
+    .toc .num { width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1em; flex-shrink: 0; }
+    .toc .chapter-info h3 { font-size: 1.05em; margin-bottom: 4px; }
+    .toc .chapter-info p { font-size: 0.82em; color: #888; }
+    .toc .chapter-info .tags { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+    .toc .chapter-info .tag { font-size: 0.72em; padding: 2px 8px; background: #E8F4FD; color: var(--primary); border-radius: 10px; }
+
+    .skill-info { background: linear-gradient(135deg, #FFFDE7, #FFF9C4); border: 2px solid var(--gold); border-radius: 20px; padding: 20px; margin-bottom: 24px; }
+    .skill-info h3 { color: #E6A800; font-size: 1.05em; margin-bottom: 8px; }
+    .skill-info code { background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+
+    .footer { text-align: center; padding: 24px; color: #999; font-size: 0.8em; }
+    .footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="cover">
+      <div class="cover-characters">🤖🦞👦</div>
+      <h1>漫画图解 OpenClaw</h1>
+      <div class="subtitle">哆啦A梦带你认识 AI 小龙虾</div>
+      <div class="meta-line">风格：哆啦A梦 | 全 5 话 | 适合零基础</div>
+    </div>
+
+    <div class="intro-box">
+      <h2>📖 关于本漫画</h2>
+      <p>OpenClaw（小龙虾）是 2025-2026 年最火的开源 AI Agent 框架，GitHub 星标突破 28 万。本漫画用哆啦A梦的世界观，将复杂的技术概念变成有趣的故事，让你轻松理解 OpenClaw 的核心架构和使用方法。</p>
+    </div>
+
+    <ul class="toc">
+      <li><a href="chapter01.html">
+        <span class="num">1</span>
+        <div class="chapter-info">
+          <h3>四次元口袋里的小龙虾</h3>
+          <p>大雄遇到难题，哆啦A梦掏出 OpenClaw——什么是 AI Agent？</p>
+          <div class="tags">
+            <span class="tag">AI Agent</span>
+            <span class="tag">OpenClaw 简介</span>
+            <span class="tag">六大能力</span>
+          </div>
+        </div>
+      </a></li>
+
+      <li><a href="chapter02.html">
+        <span class="num">2</span>
+        <div class="chapter-info">
+          <h3>小龙虾的四层铠甲</h3>
+          <p>用道具类比讲解 OpenClaw 的四层架构设计</p>
+          <div class="tags">
+            <span class="tag">交互层</span>
+            <span class="tag">网关层</span>
+            <span class="tag">智能体层</span>
+            <span class="tag">执行层</span>
+          </div>
+        </div>
+      </a></li>
+
+      <li><a href="chapter03.html">
+        <span class="num">3</span>
+        <div class="chapter-info">
+          <h3>百宝袋就是 Skills</h3>
+          <p>用任意门、竹蜻蜓类比 Skills 系统的模块化设计</p>
+          <div class="tags">
+            <span class="tag">Skills 系统</span>
+            <span class="tag">ClawHub</span>
+            <span class="tag">模块化</span>
+          </div>
+        </div>
+      </a></li>
+
+      <li><a href="chapter04.html">
+        <span class="num">4</span>
+        <div class="chapter-info">
+          <h3>记忆面包与安全头盔</h3>
+          <p>OpenClaw 的三级记忆系统和安全机制</p>
+          <div class="tags">
+            <span class="tag">记忆系统</span>
+            <span class="tag">安全机制</span>
+            <span class="tag">沙箱隔离</span>
+          </div>
+        </div>
+      </a></li>
+
+      <li><a href="chapter05.html">
+        <span class="num">5</span>
+        <div class="chapter-info">
+          <h3>一起养虾吧！</h3>
+          <p>从零开始部署和使用 OpenClaw 的实战教程</p>
+          <div class="tags">
+            <span class="tag">部署教程</span>
+            <span class="tag">阿里云</span>
+            <span class="tag">本地安装</span>
+          </div>
+        </div>
+      </a></li>
+    </ul>
+
+    <div class="skill-info">
+      <h3>🛠️ 本漫画由 comic-guide-skill 生成</h3>
+      <p>安装这个 Skill，你也可以为任何技术文档生成漫画图解：</p>
+      <p style="margin-top:8px;"><code>clawhub install comic-guide</code></p>
+      <p style="margin-top:4px;font-size:0.85em;color:#888;">支持 Cursor / Claude Code / OpenClaw 等多平台</p>
+    </div>
+
+    <div class="footer">
+      <p>漫画图解 by <a href="https://github.com/bcefghj/comic-guide-skill">comic-guide-skill</a></p>
+      <p style="margin-top:4px;">风格：哆啦A梦 | 技术：纯 HTML/CSS</p>
+    </div>
+  </div>
+</body>
+</html>
