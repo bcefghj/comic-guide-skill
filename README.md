@@ -29,6 +29,42 @@
 - 多面板布局（2x2 / 2x3），中文文字嵌入图片
 - 可直接用于文档、博客、小红书、微信公众号分享
 
+## 10 种风格预览
+
+同一主题「图解 OpenClaw」的 10 种画风效果对比：
+
+### 哆啦A梦（默认）
+![doraemon](examples/openclaw-guide/01-what-is-openclaw.png)
+
+### 火影忍者
+![naruto](examples/openclaw-guide/styles-preview/naruto-openclaw.png)
+
+### 海贼王
+![onepiece](examples/openclaw-guide/styles-preview/onepiece-openclaw.png)
+
+### 龙珠
+![dragonball](examples/openclaw-guide/styles-preview/dragonball-openclaw.png)
+
+### 间谍过家家
+![spyfamily](examples/openclaw-guide/styles-preview/spyfamily-openclaw.png)
+
+### Q版萌系
+![chibi](examples/openclaw-guide/styles-preview/chibi-openclaw.png)
+
+### 国风水墨
+![guofeng](examples/openclaw-guide/styles-preview/guofeng-openclaw.png)
+
+### 吉卜力
+![ghibli](examples/openclaw-guide/styles-preview/ghibli-openclaw.png)
+
+### 蜡笔小新
+![shinchan](examples/openclaw-guide/styles-preview/shinchan-openclaw.png)
+
+### 名侦探柯南
+![conan](examples/openclaw-guide/styles-preview/conan-openclaw.png)
+
+---
+
 ## 支持的漫画风格
 
 | 风格 ID | 名称 | 画风特点 | 适合场景 |
